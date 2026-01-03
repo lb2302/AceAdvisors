@@ -317,20 +317,36 @@
             line-height: 1.8;
         }
 
-        /* --- FAQ SECTION --- */
-        .faq { background-color: var(--bg-light); } /* Changed to white to alternate */
+        /* --- FAQ SECTION (UPDATED LAYOUT) --- */
+        .faq { background-color: var(--bg-light); }
 
         .faq-container {
-            max-width: 800px;
+            max-width: 1000px; /* Increased width to fit 2 columns comfortably */
             margin: 0 auto;
+        }
+
+        /* The Grid Layout */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 2 Columns */
+            gap: 1.5rem; /* Space between items */
+            margin-bottom: 3rem; /* Space between the top and bottom groups */
+        }
+
+        .faq-group-title {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            opacity: 0.8;
         }
 
         details {
             background: var(--bg-off-white);
-            margin-bottom: 1rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
             overflow: hidden;
+            height: fit-content; /* Ensures they don't stretch weirdly */
         }
 
         summary {
@@ -341,6 +357,7 @@
             list-style: none;
             position: relative;
             transition: background 0.3s;
+            padding-right: 3rem; /* Space for the icon */
         }
 
         summary:hover { background-color: #e2e8f0; }
@@ -349,20 +366,40 @@
             content: '+';
             position: absolute;
             right: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
             font-size: 1.5rem;
             color: var(--accent-color);
             transition: transform 0.3s;
         }
 
-        details[open] summary::after { transform: rotate(45deg); }
+        details[open] summary::after { transform: translateY(-50%) rotate(45deg); }
 
         .faq-answer {
             padding: 1.2rem;
             border-top: 1px solid #cbd5e1;
             color: var(--text-dark);
-            line-height: 1.7;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        /* Add this to your CSS for the FAQ lists */
+        .faq-answer ul {
+            margin-top: 0.5rem;
+            margin-left: 1.5rem; /* Indents the bullets */
+            list-style-type: disc;
         }
 
+        .faq-answer li {
+            margin-bottom: 0.3rem; /* Spacing between list items */
+        }
+
+        /* Mobile Responsive: Stack everything in 1 column */
+        @media screen and (max-width: 768px) {
+            .faq-grid {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+        }
         /* --- CONTACT SECTION --- */
         .contact { text-align: center; background-color: var(--bg-off-white); }
 
@@ -494,10 +531,11 @@
     <section id="about" class="about reveal">
         <div class="about-image"></div>
         <div class="about-content">
-            <h2 class="section-title"><span>Meet Naveed Shaikh</span></h2>
-            <h3>Principal Mortgage Advisor</h3>
+            <h2 class="section-title"><span>About Ace Advisor</span></h2>
             <p style="margin-top: 1rem;">
-                At <strong>The Ace Advisor</strong>, we believe that securing a mortgage shouldn't be a stressful ordeal. With over a decade of experience, Naveed Shaikh specializes in finding the right loan products for first-time buyers and investors.
+                Ace Advisor is a trusted mortgage advisory firm dedicated to helping individuals and families make confident property financing decisions. We specialize in finding the right home loan solutions by matching our clients with the most suitable lenders, rates, and repayment options.
+With access to multiple banks and financial institutions, we simplify the mortgage process—from first consultation to final disbursement—so you don’t have to navigate complex paperwork or negotiations alone.
+At Ace Advisor, we believe that every client’s financial situation is unique. That’s why we take a personalized, transparent, and ethical approach to mortgage advisory. Whether you are a first-time homebuyer, upgrading your property, refinancing an existing loan, or transferring your mortgage to another bank, our goal is to secure the best possible outcome for you.
             </p>
         </div>
     </section>
@@ -516,9 +554,9 @@
                 <p>Lower your monthly payments or cash out equity. We analyze your situation to maximize savings.</p>
             </div>
             <div class="card">
-                <div class="icon">📈</div>
-                <h3>Investment Loans</h3>
-                <p>Building a property portfolio? Get specialized advice on interest-only loans.</p>
+                <div class="icon">💰</div>
+                <h3>Buyout</h3>
+                <p>Shift your existing home loan from one bank to another. Get lower interest rates, better terms, or top-up your loan.</p>
             </div>
         </div>
     </section>
@@ -588,26 +626,238 @@
         <h2 class="section-title"><span>Frequent Questions</span></h2>
         
         <div class="faq-container">
-            <details>
-                <summary>What documents do I need to apply for a mortgage?</summary>
-                <div class="faq-answer">
-                    Typically, you will need your Passport/Visa copies, Emirates ID, Salary Certificate (or Trade License if self-employed), and 6 months of bank statements.
-                </div>
-            </details>
+            
+            
+            <div class="faq-grid">
+                
+                <details>
+                    <summary>Who can apply for a mortgage in the UAE?</summary>
+                    <div class="faq-answer">
+                        Both UAE residents (salaried or self-employed) and non-residents can apply. Eligibility depends on income, age, credit history, and property type.
+                    </div>
+                </details>
 
-            <details>
-                <summary>How much down payment is required?</summary>
-                <div class="faq-answer">
-                    For UAE expats, the minimum down payment is usually 20% for a first property under AED 5 million. For UAE Nationals, it is 15%.
-                </div>
-            </details>
+                <details>
+                    <summary>What is the maximum loan tenure allowed?</summary>
+                    <div class="faq-answer">
+                        Up to 25 years, provided the borrower’s age at loan maturity does not exceed:
+                        <ul>
+                            <li>65 years (salaried)</li>
+                            <li>70 years (self-employed)</li>
+                        </ul>
+                    </div>
+                </details>
 
-            <details>
-                <summary>What is the difference between Fixed and Variable rates?</summary>
-                <div class="faq-answer">
-                    A <strong>Fixed Rate</strong> stays the same for a set period (e.g., 3 years), giving you payment certainty. A <strong>Variable Rate</strong> is linked to EIBOR and can fluctuate.
-                </div>
-            </details>
+                <details>
+                    <summary>What is the minimum salary required for a UAE home loan?</summary>
+                    <div class="faq-answer">
+                        Most banks require:
+                        <ul>
+                            <li>AED 10,000/month for salaried individuals</li>
+                            <li>Higher income may be required for non-listed companies or self-employed applicants</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can I get a mortgage if I am self-employed?</summary>
+                    <div class="faq-answer">
+                        Yes. You will need:
+                        <ul>
+                            <li>Trade license (usually 2+ years old)</li>
+                            <li>Audited financials</li>
+                            <li>Bank statements</li>
+                            <li>Proof of income sustainability</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What is an AECB credit report?</summary>
+                    <div class="faq-answer">
+                        It is the Al Etihad Credit Bureau report, showing your:
+                        <ul>
+                            <li>Existing loans</li>
+                            <li>Credit cards</li>
+                            <li>Repayment history</li>
+                        </ul>
+                        Banks use it to assess your creditworthiness.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How much of my salary can go towards EMI?</summary>
+                    <div class="faq-answer">
+                        As per UAE Central Bank:
+                        <ul>
+                            <li>Maximum 50% Debt Burden Ratio (DBR)</li>
+                        </ul>
+                        This includes all loans, credit cards, and the new mortgage EMI.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What interest rates are offered in the UAE?</summary>
+                    <div class="faq-answer">
+                        Rates depend on:
+                        <ul>
+                            <li>Fixed or variable option</li>
+                            <li>Loan amount and tenure</li>
+                            <li>Your profile and employer</li>
+                        </ul>
+                        Typically:
+                        <ul>
+                            <li>Fixed rate: 2–5 years</li>
+                            <li>Variable rate: EIBOR-linked after fixed period</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What is EIBOR?</summary>
+                    <div class="faq-answer">
+                        Emirates Interbank Offered Rate (EIBOR) is the benchmark interest rate used by UAE banks for variable-rate mortgages.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can I buy an off-plan property with a mortgage?</summary>
+                    <div class="faq-answer">
+                        Yes, but:
+                        <ul>
+                            <li>Only from approved developers</li>
+                            <li>Banks usually finance 25–50% of the property value</li>
+                            <li>Mortgage is released in stages (construction-linked)</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What is a mortgage pre-approval?</summary>
+                    <div class="faq-answer">
+                        A pre-approval is a bank confirmation of:
+                        <ul>
+                            <li>Your eligibility</li>
+                            <li>Maximum loan amount</li>
+                        </ul>
+                        Valid for 60 days and required before signing an MOU in Dubai.
+                    </div>
+                </details>
+
+            </div>
+
+            
+            <div class="faq-grid">
+                
+                <details>
+                    <summary>Is mortgage approval guaranteed after pre-approval?</summary>
+                    <div class="faq-answer">
+                        Pre-approval confirms eligibility, but final approval depends on property valuation, legal checks, and documents.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What fees are involved in a UAE mortgage?</summary>
+                    <div class="faq-answer">
+                        Typical costs include:
+                        <ul>
+                            <li>Bank processing fee (0.5%–1%)</li>
+                            <li>Property valuation fee (AED 2,500–3,500)</li>
+                            <li>Dubai Land Department fee (4%)</li>
+                            <li>Mortgage registration fee (0.25% of loan)</li>
+                            <li>Mortgage broker fee</li>
+                            <li>Trustee & admin charges</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can I transfer my mortgage to another bank?</summary>
+                    <div class="faq-answer">
+                        Yes. This is called a mortgage balance transfer.
+                        <ul>
+                            <li>Done to reduce interest rate or EMI</li>
+                            <li>New bank settles the old loan</li>
+                            <li>Usually costs less than staying on a higher rate</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Is there a penalty for early settlement?</summary>
+                    <div class="faq-answer">
+                        Yes, but capped by law:
+                        <ul>
+                            <li>1% of outstanding amount</li>
+                            <li>Maximum AED 10,500</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Can I get a top-up loan on my existing mortgage?</summary>
+                    <div class="faq-answer">
+                        Yes, subject to:
+                        <ul>
+                            <li>Property valuation</li>
+                            <li>Available equity</li>
+                            <li>DBR eligibility</li>
+                        </ul>
+                        Top-ups can be used for renovation, investment, or personal needs.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>How long does the mortgage process take in the UAE?</summary>
+                    <div class="faq-answer">
+                        On average:
+                        <ul>
+                            <li>Pre-approval: 2–5 working days</li>
+                            <li>Final approval & disbursement: 2–4 weeks</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>What is an Islamic mortgage?</summary>
+                    <div class="faq-answer">
+                        An Islamic mortgage is a Shariah-compliant home financing solution where the bank does not charge interest (riba). Instead, it earns profit through approved Islamic structures.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Is an Islamic mortgage truly halal?</summary>
+                    <div class="faq-answer">
+                        Yes. Islamic mortgages offered by UAE Islamic banks are:
+                        <ul>
+                            <li>Reviewed by Shariah Boards</li>
+                            <li>Structured to avoid interest (riba)</li>
+                            <li>Based on asset-backed transactions</li>
+                        </ul>
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Do I need life insurance for a mortgage?</summary>
+                    <div class="faq-answer">
+                        Yes. Banks require mortgage life insurance to cover the outstanding loan in case of death or permanent disability.
+                    </div>
+                </details>
+
+                <details>
+                    <summary>Why should I use a mortgage advisor instead of going directly to a bank?</summary>
+                    <div class="faq-answer">
+                        A mortgage advisor:
+                        <ul>
+                            <li>Compares multiple banks</li>
+                            <li>Negotiates better rates</li>
+                            <li>Handles paperwork & follow-ups</li>
+                            <li>Saves time, money, and stress</li>
+                        </ul>
+                    </div>
+                </details>
+
+            </div>
         </div>
     </section>
 
