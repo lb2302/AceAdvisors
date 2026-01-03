@@ -58,13 +58,14 @@
         .nav-links {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 1.5rem; /* Adjusted gap to fit new item */
             align-items: center;
         }
 
         .nav-links a {
             font-weight: 500;
             transition: color var(--transition-speed);
+            font-size: 0.95rem;
         }
 
         .nav-links a:hover { color: var(--accent-color); }
@@ -183,7 +184,7 @@
         .card:hover { transform: translateY(-10px); }
         .icon { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 1rem;}
 
-        /* --- EIBOR SECTION (NEW) --- */
+        /* --- EIBOR SECTION --- */
         .eibor {
             background-color: var(--bg-light);
             text-align: center;
@@ -192,7 +193,7 @@
         .eibor-container {
             max-width: 800px;
             margin: 0 auto;
-            overflow-x: auto; /* Handles tables on mobile */
+            overflow-x: auto;
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border-radius: 8px;
         }
@@ -225,8 +226,99 @@
             margin-bottom: 2rem;
         }
 
-        /* --- FAQ SECTION (NEW) --- */
-        .faq { background-color: var(--bg-off-white); }
+        /* --- CALCULATOR SECTION (NEW) --- */
+        .calculator-section {
+            background-color: var(--bg-off-white);
+        }
+
+        .calc-wrapper {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .input-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .label-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
+        /* Custom Range Slider */
+        input[type=range] {
+            width: 100%;
+            -webkit-appearance: none;
+            background: transparent;
+            margin-top: 0.5rem;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: var(--accent-color);
+            cursor: pointer;
+            margin-top: -8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            background: #e2e8f0;
+            border-radius: 2px;
+        }
+
+        .input-field {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 6px;
+            font-size: 1rem;
+            color: var(--text-dark);
+            background: #f8fafc;
+        }
+
+        .result-box {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+        }
+
+        .monthly-payment {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--accent-color);
+            margin: 1rem 0;
+        }
+
+        .result-details {
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            opacity: 0.9;
+            line-height: 1.8;
+        }
+
+        /* --- FAQ SECTION --- */
+        .faq { background-color: var(--bg-light); } /* Changed to white to alternate */
 
         .faq-container {
             max-width: 800px;
@@ -234,7 +326,7 @@
         }
 
         details {
-            background: white;
+            background: var(--bg-off-white);
             margin-bottom: 1rem;
             border-radius: 8px;
             box-shadow: 0 2px 5px rgba(0,0,0,0.05);
@@ -246,14 +338,13 @@
             cursor: pointer;
             font-weight: 600;
             color: var(--primary-color);
-            list-style: none; /* Hides default triangle */
+            list-style: none;
             position: relative;
             transition: background 0.3s;
         }
 
-        summary:hover { background-color: #f8fafc; }
+        summary:hover { background-color: #e2e8f0; }
 
-        /* Custom Accordion Icon */
         summary::after {
             content: '+';
             position: absolute;
@@ -267,18 +358,18 @@
 
         .faq-answer {
             padding: 1.2rem;
-            border-top: 1px solid #f1f5f9;
+            border-top: 1px solid #cbd5e1;
             color: var(--text-dark);
             line-height: 1.7;
         }
 
-        /* --- CONTACT SECTION (FORM STYLE) --- */
-        .contact { text-align: center; }
+        /* --- CONTACT SECTION --- */
+        .contact { text-align: center; background-color: var(--bg-off-white); }
 
         .contact-container {
             max-width: 600px;
             margin: 0 auto;
-            background: var(--bg-off-white);
+            background: white;
             padding: 3rem 2rem;
             border-radius: 8px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.05);
@@ -288,7 +379,7 @@
             display: flex;
             flex-direction: column;
             gap: 1.2rem;
-            text-align: left; /* Aligns labels to left */
+            text-align: left;
         }
 
         input, textarea {
@@ -366,10 +457,9 @@
             .hero p { font-size: 1rem; padding: 0 1rem; }
             .about { flex-direction: column; gap: 2rem; }
             .about-image { width: 100%; height: 300px; }
+            .calc-wrapper { grid-template-columns: 1fr; gap: 2rem; } /* Stack calculator */
             section { padding: 3rem 5%; }
             .section-title { font-size: 2rem; }
-            
-            /* Table scrolling for mobile */
             th, td { font-size: 0.9rem; padding: 0.8rem 0.5rem; }
         }
     </style>
@@ -384,7 +474,7 @@
             <li><a href="#about" onclick="closeMenu()">About</a></li>
             <li><a href="#services" onclick="closeMenu()">Services</a></li>
             <li><a href="#eibor" onclick="closeMenu()">EIBOR Rates</a></li>
-            <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
+            <li><a href="#calculator" onclick="closeMenu()">Calculator</a></li> <li><a href="#faq" onclick="closeMenu()">FAQ</a></li>
             <li><a href="#contact" class="cta-btn" onclick="closeMenu()">Contact Us</a></li>
         </ul>
 
@@ -446,30 +536,12 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Overnight (O/N)</td>
-                        <td>3.50887</td>
-                    </tr>
-                    <tr>
-                        <td>1 Week</td>
-                        <td>3.75505</td>
-                    </tr>
-                    <tr>
-                        <td>1 Month</td>
-                        <td>3.71233</td>
-                    </tr>
-                    <tr>
-                        <td>3 Months</td>
-                        <td>3.62500</td>
-                    </tr>
-                    <tr>
-                        <td>6 Months</td>
-                        <td>3.54053</td>
-                    </tr>
-                    <tr>
-                        <td>1 Year</td>
-                        <td>3.53734</td>
-                    </tr>
+                    <tr><td>Overnight (O/N)</td><td>3.50887</td></tr>
+                    <tr><td>1 Week</td><td>3.75505</td></tr>
+                    <tr><td>1 Month</td><td>3.71233</td></tr>
+                    <tr><td>3 Months</td><td>3.62500</td></tr>
+                    <tr><td>6 Months</td><td>3.54053</td></tr>
+                    <tr><td>1 Year</td><td>3.53734</td></tr>
                 </tbody>
             </table>
         </div>
@@ -484,6 +556,59 @@
         </a>
     </section>
 
+    <section id="calculator" class="calculator-section reveal">
+        <h2 class="section-title"><span>Mortgage Calculator</span></h2>
+        
+        <div class="calc-wrapper">
+            <div class="calc-inputs">
+                <div class="input-group">
+                    <div class="label-row">
+                        <label>Property Value (AED)</label>
+                        <span id="propValDisplay">1,000,000</span>
+                    </div>
+                    <input type="number" id="propValInput" class="input-field" value="1000000">
+                    <input type="range" id="propValSlider" min="100000" max="10000000" step="10000" value="1000000">
+                </div>
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label>Down Payment (<span id="dpPercentDisplay">20</span>%)</label>
+                        <span id="dpAmountDisplay">200,000</span>
+                    </div>
+                    <input type="range" id="dpSlider" min="15" max="80" step="1" value="20">
+                </div>
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label>Interest Rate (%)</label>
+                        <span id="rateDisplay">4.5%</span>
+                    </div>
+                    <input type="range" id="rateSlider" min="1" max="10" step="0.1" value="4.5">
+                </div>
+
+                <div class="input-group">
+                    <div class="label-row">
+                        <label>Loan Period (<span id="yearsDisplay">25</span> Years)</label>
+                    </div>
+                    <input type="range" id="yearSlider" min="1" max="25" step="1" value="25">
+                </div>
+            </div>
+
+            <div class="result-box">
+                <h3>Estimated Monthly Repayment</h3>
+                <div class="monthly-payment" id="monthlyPayment">AED 4,446</div>
+                
+                <div class="result-details">
+                    <p>Loan Amount: <strong id="loanAmtDisplay">AED 800,000</strong></p>
+                    <p>Total Interest Payable: <strong id="totalInterestDisplay">AED 533,915</strong></p>
+                    <p>Total Cost of Mortgage: <strong id="totalCostDisplay">AED 1,333,915</strong></p>
+                </div>
+                
+                <a href="#contact" class="cta-btn" style="background: white; color: var(--primary-color); margin-top: 1.5rem;">Get Pre-Approved</a>
+            </div>
+        </div>
+    </section>
+
     <section id="faq" class="faq reveal">
         <h2 class="section-title"><span>Frequent Questions</span></h2>
         
@@ -491,62 +616,55 @@
             <details>
                 <summary>What documents do I need to apply for a mortgage?</summary>
                 <div class="faq-answer">
-                    Typically, you will need your Passport/Visa copies, Emirates ID, Salary Certificate (or Trade License if self-employed), and 6 months of bank statements. We help you organize this entire package.
+                    Typically, you will need your Passport/Visa copies, Emirates ID, Salary Certificate (or Trade License if self-employed), and 6 months of bank statements.
                 </div>
             </details>
 
             <details>
                 <summary>How much down payment is required?</summary>
                 <div class="faq-answer">
-                    For UAE expats, the minimum down payment is usually 20% for a first property under AED 5 million. For UAE Nationals, it is 15%. Off-plan properties may have different payment plans.
+                    For UAE expats, the minimum down payment is usually 20% for a first property under AED 5 million. For UAE Nationals, it is 15%.
                 </div>
             </details>
 
             <details>
                 <summary>What is the difference between Fixed and Variable rates?</summary>
                 <div class="faq-answer">
-                    A <strong>Fixed Rate</strong> stays the same for a set period (e.g., 3 years), giving you payment certainty. A <strong>Variable Rate</strong> is linked to EIBOR and can go up or down depending on market conditions.
-                </div>
-            </details>
-
-            <details>
-                <summary>Can I refinance my existing mortgage?</summary>
-                <div class="faq-answer">
-                    Absolutely. If interest rates have dropped or your property value has increased, refinancing can lower your monthly payments or allow you to release equity (cash out) for other investments.
+                    A <strong>Fixed Rate</strong> stays the same for a set period (e.g., 3 years), giving you payment certainty. A <strong>Variable Rate</strong> is linked to EIBOR and can fluctuate.
                 </div>
             </details>
         </div>
     </section>
 
     <section id="contact" class="contact reveal">
-    <h2 class="section-title"><span>Contact Us</span></h2>
-    <p style="margin-bottom: 2rem;">Fill out the form below and Naveed will get back to you within 24 hours.</p>
-    
-    <div class="contact-container">
-        <form action="https://formsubmit.co/bc3c3bb174466d65dd6340459a96d002" method="POST">
-            
-            <input type="hidden" name="_subject" value="New Mortgage Lead from Website!">
-            <input type="hidden" name="_captcha" value="false">
-            <div>
-                <input type="text" name="name" placeholder="Full Name" required>
-            </div>
-            
-            <div>
-                <input type="email" name="email" placeholder="Email Address" required>
-            </div>
+        <h2 class="section-title"><span>Contact Us</span></h2>
+        <p style="margin-bottom: 2rem;">Fill out the form below and Naveed will get back to you within 24 hours.</p>
+        
+        <div class="contact-container">
+            <form action="https://formsubmit.co/naveed.shaikh@theaceadvisor.com" method="POST">
+                <input type="hidden" name="_subject" value="New Mortgage Lead from Website!">
+                <input type="hidden" name="_captcha" value="false">
 
-            <div>
-                <input type="tel" name="phone" placeholder="Phone Number (e.g. 050 123 4567)" required>
-            </div>
-            
-            <div>
-                <textarea name="message" rows="5" placeholder="How can we help? (e.g. Buying first home, Refinancing...)" required></textarea>
-            </div>
+                <div>
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                
+                <div>
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
 
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-</section>
+                <div>
+                    <input type="tel" name="phone" placeholder="Phone Number" required>
+                </div>
+                
+                <div>
+                    <textarea name="message" rows="5" placeholder="How can we help?" required></textarea>
+                </div>
+
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
 
     <footer>
         <p>&copy; 2024 The Ace Advisor. All rights reserved.</p>
@@ -554,7 +672,7 @@
     </footer>
 
     <script>
-        // 1. Mobile Menu Toggle Logic
+        // 1. Mobile Menu Logic
         const navLinks = document.getElementById('navLinks');
         function toggleMenu() { navLinks.classList.toggle('nav-active'); }
         function closeMenu() { navLinks.classList.remove('nav-active'); }
@@ -567,7 +685,7 @@
             });
         });
 
-        // 3. Scroll Animation
+        // 3. Reveal Animation
         const revealElements = document.querySelectorAll('.reveal');
         const revealOnScroll = () => {
             const windowHeight = window.innerHeight;
@@ -581,6 +699,86 @@
         };
         window.addEventListener('scroll', revealOnScroll);
         revealOnScroll();
+
+        // 4. Mortgage Calculator Logic
+        const propInput = document.getElementById('propValInput');
+        const propSlider = document.getElementById('propValSlider');
+        const dpSlider = document.getElementById('dpSlider');
+        const rateSlider = document.getElementById('rateSlider');
+        const yearSlider = document.getElementById('yearSlider');
+
+        const propDisplay = document.getElementById('propValDisplay');
+        const dpPercentDisplay = document.getElementById('dpPercentDisplay');
+        const dpAmountDisplay = document.getElementById('dpAmountDisplay');
+        const rateDisplay = document.getElementById('rateDisplay');
+        const yearsDisplay = document.getElementById('yearsDisplay');
+        
+        const monthlyPaymentUI = document.getElementById('monthlyPayment');
+        const loanAmtDisplay = document.getElementById('loanAmtDisplay');
+        const totalInterestDisplay = document.getElementById('totalInterestDisplay');
+        const totalCostDisplay = document.getElementById('totalCostDisplay');
+
+        // Helper to format currency
+        const formatAED = (num) => {
+            return 'AED ' + num.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        const calculateMortgage = () => {
+            // Get values
+            let propertyValue = parseFloat(propInput.value);
+            let downPaymentPercent = parseFloat(dpSlider.value);
+            let interestRate = parseFloat(rateSlider.value);
+            let years = parseFloat(yearSlider.value);
+
+            // Calculations
+            let downPaymentAmount = propertyValue * (downPaymentPercent / 100);
+            let loanAmount = propertyValue - downPaymentAmount;
+            let monthlyRate = (interestRate / 100) / 12;
+            let totalPayments = years * 12;
+
+            // Mortgage Formula: M = P [ i(1 + i)^n ] / [ (1 + i)^n – 1 ]
+            let monthlyPayment = 0;
+            if (interestRate === 0) {
+                monthlyPayment = loanAmount / totalPayments;
+            } else {
+                monthlyPayment = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalPayments)) / (Math.pow(1 + monthlyRate, totalPayments) - 1);
+            }
+
+            let totalCost = monthlyPayment * totalPayments;
+            let totalInterest = totalCost - loanAmount;
+
+            // Update UI Labels
+            propDisplay.innerText = propertyValue.toLocaleString();
+            dpPercentDisplay.innerText = downPaymentPercent;
+            dpAmountDisplay.innerText = downPaymentAmount.toLocaleString();
+            rateDisplay.innerText = interestRate + '%';
+            yearsDisplay.innerText = years;
+
+            // Update Results
+            monthlyPaymentUI.innerText = formatAED(monthlyPayment);
+            loanAmtDisplay.innerText = formatAED(loanAmount);
+            totalInterestDisplay.innerText = formatAED(totalInterest);
+            totalCostDisplay.innerText = formatAED(totalCost);
+        };
+
+        // Event Listeners
+        propInput.addEventListener('input', () => {
+            propSlider.value = propInput.value;
+            calculateMortgage();
+        });
+
+        propSlider.addEventListener('input', () => {
+            propInput.value = propSlider.value;
+            calculateMortgage();
+        });
+
+        dpSlider.addEventListener('input', calculateMortgage);
+        rateSlider.addEventListener('input', calculateMortgage);
+        yearSlider.addEventListener('input', calculateMortgage);
+
+        // Init
+        calculateMortgage();
+
     </script>
 </body>
 </html>
